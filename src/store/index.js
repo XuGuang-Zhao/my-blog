@@ -1,10 +1,10 @@
-import { configureStore } from "@reduxjs/toolkit";
-import userStore from "@/store/moudles/user.js";
+import counterStore from "@/store/moudles/counterStore.js";
+import {configureStore} from "@reduxjs/toolkit";
 
-const store = configureStore({
-  reducer: {
-    user: userStore,
-  },
-});
+const store = configureStore ({
+    reducer: {
+        counter: counterStore
+    }
+})
 
-export default store;
+export default store
