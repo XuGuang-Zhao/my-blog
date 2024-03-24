@@ -1,5 +1,5 @@
 const Article = () => {
-  return <>这是Article页 测试</>;
-};
+  return <>这是Article页</>;
+}
 
-export default Article;
+export default Article
