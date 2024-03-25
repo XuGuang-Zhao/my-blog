@@ -2,14 +2,14 @@ import { createBrowserRouter } from "react-router-dom";
 import Home from "@/pages/Home";
 import Article from "@/pages/Article";
 import SubMenu from "@/pages/SubMenu/index.jsx";
-import Layout from "@/pages/Layout/index.jsx";
 import NotFound from "@/pages/NotFound/index.jsx";
 import Login from "@/pages/Login/index.jsx";
+import App from "@/App.jsx";
 
 export const routes = [
   {
     path: "/",
-    element: <Layout />,
+    element: <App />,
     children: [
       {
         title: "主页",

@@ -1,4 +1,5 @@
 import axios from "axios";
+import { getToken } from "@/utils/token.js";
 
 const request = axios.create({
   baseURL: "http://geek.itheima.net/v1_0",
@@ -7,6 +8,10 @@ const request = axios.create({
 
 request.interceptors.request.use(
   (config) => {
+    const token = getToken();
+    if (token) {
+      config.headers.authorization = token;
+    }
     return config;
   },
   (error) => {

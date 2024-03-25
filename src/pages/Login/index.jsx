@@ -31,7 +31,7 @@ const Login = () => {
               },
             ]}
           >
-            <Input size="large" placeholder="请输入手机号"></Input>
+            <Input size="large" placeholder="手机号: 1231234567"></Input>
           </Form.Item>
           <Form.Item
             name="code"
@@ -42,7 +42,7 @@ const Login = () => {
               },
             ]}
           >
-            <Input size="large" placeholder="请输入验证码"></Input>
+            <Input size="large" placeholder="验证码: 246810"></Input>
           </Form.Item>
           <Form.Item>
             <Button type="primary" htmlType="submit" size="large" block>
