@@ -1,23 +1,34 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { request } from "@/utils/request.js";
-import { setToken as setCookieToken, getToken } from "@/utils/token.js";
-import { message } from "antd";
-import { useNavigate } from "react-router-dom";
+import {
+  setToken as setCookieToken,
+  getToken,
+  removeToken,
+} from "@/utils/token.js";
 
 const userStore = createSlice({
   name: "user",
   initialState: {
     token: getToken(),
+    userInfo: {},
   },
   reducers: {
     setToken(state, action) {
       state.token = action.payload;
       setCookieToken(action.payload);
     },
+    setUserInfo(state, action) {
+      state.userInfo = action.payload;
+    },
+    clearUserInfo(state) {
+      state.token = "";
+      state.userInfo = {};
+      removeToken();
+    },
   },
 });
 
-const { setToken } = userStore.actions;
+const { setToken, setUserInfo, clearUserInfo } = userStore.actions;
 const reducer = userStore.reducer;
 
 const fetchLogin = (loginForm) => {
@@ -26,6 +37,14 @@ const fetchLogin = (loginForm) => {
     await dispatch(setToken(res.data.token));
   };
 };
-export { fetchLogin, setToken };
+
+const fetchUserInfo = (loginForm) => {
+  return async (dispatch) => {
+    const res = await request.get("/user/profile");
+    await dispatch(setUserInfo(res.data));
+  };
+};
+
+export { fetchLogin, fetchUserInfo, setToken, setUserInfo, clearUserInfo };
 
 export default reducer;

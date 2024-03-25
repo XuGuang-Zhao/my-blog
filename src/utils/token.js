@@ -4,5 +4,9 @@ export const getToken = () => {
 };
 
 export const setToken = (token) => {
-  Cookies.set("idToken", token);
+  Cookies.set("idToken", `Bear ${token}`);
+};
+
+export const removeToken = () => {
+  Cookies.remove("idToken");
 };
