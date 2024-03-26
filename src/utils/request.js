@@ -1,5 +1,8 @@
 import axios from "axios";
 import { getToken } from "@/utils/token.js";
+import { useNavigate } from "react-router-dom";
+import router from "@/router/index.jsx";
+import { message } from "antd";
 
 const request = axios.create({
   baseURL: "http://geek.itheima.net/v1_0",
@@ -24,6 +27,12 @@ request.interceptors.response.use(
     return response.data;
   },
   (error) => {
+    if (error.response.status === 401) {
+      setTimeout(() => {
+        message.error("登录状态过期");
+        router.navigate("/login");
+      });
+    }
     return Promise.reject(error);
   },
 );
