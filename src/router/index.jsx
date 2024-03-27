@@ -1,10 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
 import Home from "@/pages/Home";
 import Article from "@/pages/Article";
-import SubMenu from "@/pages/SubMenu/index.jsx";
 import NotFound from "@/pages/NotFound/index.jsx";
 import Login from "@/pages/Login/index.jsx";
 import App from "@/App.jsx";
+import ArticlePublish from "@/pages/ArticlePublish/index.jsx";
 
 export const routes = [
   {
@@ -22,9 +22,9 @@ export const routes = [
         element: <Article />,
       },
       {
-        title: "测试菜单",
-        path: "/subMenu",
-        element: <SubMenu />,
+        title: "文章发布",
+        path: "/article-publish",
+        element: <ArticlePublish />,
       },
       {
         path: "*",

@@ -20,10 +20,9 @@ const items = [
     icon: <DiffOutlined />,
   },
   {
-    label: "测试菜单",
-    key: "/test",
+    label: "文章发布",
+    key: "/article-publish",
     icon: <EditOutlined />,
-    children: [{ label: "二级菜单", key: "/subMenu", icon: <EditOutlined /> }],
   },
 ];
 
