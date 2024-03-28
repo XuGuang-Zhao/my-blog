@@ -21,6 +21,9 @@ import { createArticleApi, getChannelAPI } from "@/apis/aticle.js";
 const ArticlePublish = () => {
   const { Option } = Select;
   const [channelList, setChannelList] = useState([]);
+  const [imageList, setImageList] = useState([]);
+  const [imageType, setImageType] = useState(1);
+
   useEffect(() => {
     const getChannelList = async () => {
       const res = await getChannelAPI();
@@ -36,7 +39,7 @@ const ArticlePublish = () => {
       content: content,
       cover: {
         type: 0,
-        image: [],
+        image: imageList,
       },
       channel_id: channel_id,
     };
@@ -44,6 +47,14 @@ const ArticlePublish = () => {
     if (res.data) {
       message.success("发布成功");
     }
+  };
+
+  const onUploadChange = (info) => {
+    setImageList(info.fileList);
+  };
+
+  const onTypeChange = (e) => {
+    setImageType(e.target.value);
   };
 
   return (
@@ -87,28 +98,39 @@ const ArticlePublish = () => {
           </Form.Item>
           <Form.Item label="封面">
             <Form.Item name="type">
-              <Radio.Group>
-                <Radio value={1}>单图</Radio>
+              <Radio.Group value={imageType} onChange={onTypeChange}>
+                <Radio value={1}>无图</Radio>
+                <Radio value={2}>单图</Radio>
                 <Radio value={3}>三图</Radio>
-                <Radio value={0}>无图</Radio>
               </Radio.Group>
             </Form.Item>
-            <Upload listType="picture-card" showUploadList>
-              <div style={{ marginTop: 8 }}>
-                <PlusOutlined />
-              </div>
-            </Upload>
+            {imageType > 1 && (
+              <Upload
+                name="image"
+                listType="picture-card"
+                showUploadList
+                action={"http://geek.itheima.net/v1_0/upload"}
+                onChange={onUploadChange}
+                maxCount={imageType}
+                multiple={imageType > 1}
+              >
+                <div style={{ marginTop: 8 }} onChange={onUploadChange}>
+                  <PlusOutlined />
+                </div>
+              </Upload>
+            )}
           </Form.Item>
           <Form.Item
             label="内容"
             name="content"
             rules={[{ required: true, message: "请输入文章内容" }]}
+            style={{ height: 300 }}
           >
             <ReactQuill
               className="publish-quill"
               theme="snow"
               placeholder="请输入文章内容"
-              style={{ height: "300px" }}
+              style={{ height: 250 }}
             />
           </Form.Item>
           <Form.Item wrapperCol={{ offset: 4 }}>
