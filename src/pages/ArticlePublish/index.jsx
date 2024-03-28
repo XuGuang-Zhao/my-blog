@@ -8,15 +8,43 @@ import {
   Upload,
   Space,
   Select,
+  message,
 } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import "./index.scss";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
+import { useEffect, useState } from "react";
+import { createArticleApi, getChannelAPI } from "@/apis/aticle.js";
 
 const ArticlePublish = () => {
   const { Option } = Select;
+  const [channelList, setChannelList] = useState([]);
+  useEffect(() => {
+    const getChannelList = async () => {
+      const res = await getChannelAPI();
+      setChannelList(res.data.channels);
+    };
+    getChannelList();
+  }, []);
+
+  const formSubmit = async (formValue) => {
+    const { channel_id, content, title } = formValue;
+    const reqData = {
+      title: title,
+      content: content,
+      cover: {
+        type: 0,
+        image: [],
+      },
+      channel_id: channel_id,
+    };
+    const res = await createArticleApi(reqData);
+    if (res.data) {
+      message.success("发布成功");
+    }
+  };
 
   return (
     <div className="publish">
@@ -30,10 +58,12 @@ const ArticlePublish = () => {
           />
         }
       >
+        {/*提交表单*/}
         <Form
           labelCol={{ span: 4 }}
           wrapperCol={{ span: 16 }}
           initialValues={{ type: 1 }}
+          onFinish={formSubmit}
         >
           <Form.Item
             label="标题"
@@ -48,8 +78,26 @@ const ArticlePublish = () => {
             rules={[{ required: true, message: "请选择文章频道" }]}
           >
             <Select placeholder="请选择文章频道" style={{ width: 400 }}>
-              <Option value={0}>推荐</Option>
+              {channelList.map((item) => (
+                <Option key={item.id} value={item.id}>
+                  {item.name}
+                </Option>
+              ))}
             </Select>
+          </Form.Item>
+          <Form.Item label="封面">
+            <Form.Item name="type">
+              <Radio.Group>
+                <Radio value={1}>单图</Radio>
+                <Radio value={3}>三图</Radio>
+                <Radio value={0}>无图</Radio>
+              </Radio.Group>
+            </Form.Item>
+            <Upload listType="picture-card" showUploadList>
+              <div style={{ marginTop: 8 }}>
+                <PlusOutlined />
+              </div>
+            </Upload>
           </Form.Item>
           <Form.Item
             label="内容"
@@ -60,9 +108,9 @@ const ArticlePublish = () => {
               className="publish-quill"
               theme="snow"
               placeholder="请输入文章内容"
+              style={{ height: "300px" }}
             />
           </Form.Item>
-
           <Form.Item wrapperCol={{ offset: 4 }}>
             <Space>
               <Button size="large" type="primary" htmlType="submit">

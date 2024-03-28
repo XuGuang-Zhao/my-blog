@@ -1,6 +1,5 @@
 import axios from "axios";
 import { getToken } from "@/utils/token.js";
-import { useNavigate } from "react-router-dom";
 import router from "@/router/index.jsx";
 import { message } from "antd";
 
