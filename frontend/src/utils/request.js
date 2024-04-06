@@ -4,8 +4,8 @@ import router from "@/router/index.jsx";
 import { message } from "antd";
 
 const request = axios.create({
-  baseURL: "http://geek.itheima.net/v1_0",
-  timeout: 5000,
+  baseURL: "http://127.0.0.1:8080",
+  timeout: 60000,
 });
 
 request.interceptors.request.use(

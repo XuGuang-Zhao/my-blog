@@ -19,30 +19,26 @@ const Login = () => {
         <LogoImg className="login-logo" src={logo} alt="" />
         <Form onFinish={onFinish} validateTrigger="onBlur">
           <Form.Item
-            name="mobile"
+            name="username"
             rules={[
               {
                 required: true,
-                message: "请输入手机号",
-              },
-              {
-                pattern: /^1[3-9]\d{9}$/,
-                message: "请输入正确的手机号格式",
+                message: "请输入用户名",
               },
             ]}
           >
-            <Input size="large" placeholder="手机号: 1231234567"></Input>
+            <Input size="large" placeholder="请输入用户名"></Input>
           </Form.Item>
           <Form.Item
-            name="code"
+            name="password"
             rules={[
               {
                 required: true,
-                message: "请输入验证码",
+                message: "请输入密码",
               },
             ]}
           >
-            <Input size="large" placeholder="验证码: 246810"></Input>
+            <Input size="large" placeholder="请输入密码"></Input>
           </Form.Item>
           <Form.Item>
             <Button type="primary" htmlType="submit" size="large" block>

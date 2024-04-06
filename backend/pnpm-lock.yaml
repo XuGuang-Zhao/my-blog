@@ -8,12 +8,12 @@ dependencies:
   '@escook/express-joi':
     specifier: ^1.1.1
     version: 1.1.1
-  '@hapi/joi':
-    specifier: ^17.1.1
-    version: 17.1.1
   bcryptjs:
     specifier: ^2.4.3
     version: 2.4.3
+  body-parser:
+    specifier: ^1.20.2
+    version: 1.20.2
   cors:
     specifier: ^2.8.5
     version: 2.8.5
@@ -23,6 +23,9 @@ dependencies:
   express-jwt:
     specifier: ^8.4.1
     version: 8.4.1
+  joi:
+    specifier: ^17.12.3
+    version: 17.12.3
   jsonwebtoken:
     specifier: ^9.0.2
     version: 9.0.2
@@ -76,35 +79,8 @@ packages:
       joi: 17.12.3
     dev: false
 
-  /@hapi/address@4.1.0:
-    resolution: {integrity: sha512-SkszZf13HVgGmChdHo/PxchnSaCJ6cetVqLzyciudzZRT0jcOouIF/Q93mgjw8cce+D+4F4C1Z/WrfFN+O3VHQ==}
-    deprecated: Moved to 'npm install @sideway/address'
-    dependencies:
-      '@hapi/hoek': 9.3.0
-    dev: false
-
-  /@hapi/formula@2.0.0:
-    resolution: {integrity: sha512-V87P8fv7PI0LH7LiVi8Lkf3x+KCO7pQozXRssAHNXXL9L1K+uyu4XypLXwxqVDKgyQai6qj3/KteNlrqDx4W5A==}
-    deprecated: Moved to 'npm install @sideway/formula'
-    dev: false
-
   /@hapi/hoek@9.3.0:
     resolution: {integrity: sha512-/c6rf4UJlmHlC9b5BaNvzAcFv7HZ2QHaV0D4/HNlBdvFnvQq8RI4kYdhyPCl7Xj+oWvTWQ8ujhqS53LIgAe6KQ==}
-    dev: false
-
-  /@hapi/joi@17.1.1:
-    resolution: {integrity: sha512-p4DKeZAoeZW4g3u7ZeRo+vCDuSDgSvtsB/NpfjXEHTUjSeINAi/RrVOWiVQ1isaoLzMvFEhe8n5065mQq1AdQg==}
-    deprecated: Switch to 'npm install joi'
-    dependencies:
-      '@hapi/address': 4.1.0
-      '@hapi/formula': 2.0.0
-      '@hapi/hoek': 9.3.0
-      '@hapi/pinpoint': 2.0.1
-      '@hapi/topo': 5.1.0
-    dev: false
-
-  /@hapi/pinpoint@2.0.1:
-    resolution: {integrity: sha512-EKQmr16tM8s16vTT3cA5L0kZZcTMU5DUOZTuvpnY738m+jyP3JIUj+Mm1xc1rsLkGBQ/gVnfKYPwOmPg1tUR4Q==}
     dev: false
 
   /@hapi/topo@5.1.0:

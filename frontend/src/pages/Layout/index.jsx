@@ -47,7 +47,7 @@ const GeekLayout = () => {
   }, [dispatch]);
 
   const name = useSelector((state) => {
-    return state.user.userInfo.name;
+    return state.user.userInfo.username;
   });
 
   return (

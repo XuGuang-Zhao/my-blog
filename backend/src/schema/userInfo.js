@@ -1,4 +1,4 @@
-const joi = require('@hapi/joi')
+const joi = require('joi')
 
 const id = joi.number().integer().min(1).required()
 const nickname = joi.string().required()

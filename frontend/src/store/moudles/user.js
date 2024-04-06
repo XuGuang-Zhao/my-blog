@@ -5,6 +5,7 @@ import {
   getToken,
   removeToken,
 } from "@/utils/token.js";
+import {userLogin} from "@/apis/user.js";
 
 const userStore = createSlice({
   name: "user",
@@ -33,14 +34,14 @@ const reducer = userStore.reducer;
 
 const fetchLogin = (loginForm) => {
   return async (dispatch) => {
-    const res = await request.post("/authorizations", loginForm);
+    const res = await userLogin(loginForm);
     await dispatch(setToken(res.data.token));
   };
 };
 
-const fetchUserInfo = (loginForm) => {
+const fetchUserInfo = () => {
   return async (dispatch) => {
-    const res = await request.get("/user/profile");
+    const res = await request.get("/my/userInfo");
     await dispatch(setUserInfo(res.data));
   };
 };
