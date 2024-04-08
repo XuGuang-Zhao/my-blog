@@ -28,7 +28,7 @@ const Login = () => {
                 <LogoImg className="login-logo" src={logo} alt=""/>
                 {type === 'login' && <Form onFinish={userLogin} validateTrigger="onBlur">
                     <Form.Item
-                        name="username"
+                        name="mobile"
                         rules={[
                             {
                                 required: true,
@@ -36,10 +36,10 @@ const Login = () => {
                             },
                         ]}
                     >
-                        <Input size="large" placeholder="请输入用户名"></Input>
+                        <Input size="large" placeholder="手机号: 1231234567"></Input>
                     </Form.Item>
                     <Form.Item
-                        name="password"
+                        name="code"
                         rules={[
                             {
                                 required: true,
@@ -47,7 +47,7 @@ const Login = () => {
                             },
                         ]}
                     >
-                        <Input.Password size="large" placeholder="请输入密码"/>
+                        <Input size="large" placeholder="验证码: 246810"></Input>
                     </Form.Item>
                     <Form.Item>
                         <Button type="primary" htmlType="submit" size="large" block>
