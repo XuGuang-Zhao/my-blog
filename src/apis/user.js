@@ -8,3 +8,11 @@ export function userLogin(userInfo) {
         data: userInfo
     })
 }
+
+export function userRegister(userInfo) {
+    return request({
+        url: '/api/register',
+        method: 'post',
+        data: userInfo
+    })
+}
