@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1c0ce269-63d9-45d4-85dd-c7878e4e5b63" name="Changes" comment="过滤node_modules">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="1c0ce269-63d9-45d4-85dd-c7878e4e5b63" name="Changes" comment="新增文章页">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Article/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Article/index.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,12 +30,12 @@
   <component name="GitToolBoxStore">
     <option name="projectConfigVersion" value="5" />
   </component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "git@github.com:XuGuang-Zhao/my-blog-frontend.git",
-    "accountId": "74dbad07-af87-4e69-96bf-6d1939d51b62"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;git@github.com:XuGuang-Zhao/my-blog-frontend.git&quot;,
+    &quot;accountId&quot;: &quot;74dbad07-af87-4e69-96bf-6d1939d51b62&quot;
   }
-}]]></component>
+}</component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -53,7 +55,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/12496/Desktop/Github/React/my-blog-frontend&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/12496/Desktop/Github/React/my-blog-frontend/src/hooks&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -67,6 +69,9 @@
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\12496\Desktop\Github\React\my-blog-frontend\src\hooks" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\12496\Desktop\Github\React\my-blog-frontend\public" />
     </key>
@@ -91,6 +96,8 @@
       <workItem from="1712577181408" duration="249000" />
       <workItem from="1712577440099" duration="940000" />
       <workItem from="1712580464606" duration="26000" />
+      <workItem from="1712580496613" duration="5095000" />
+      <workItem from="1712668968213" duration="4131000" />
     </task>
     <task id="LOCAL-00001" summary="过滤node_modules">
       <option name="closed" value="true" />
@@ -100,14 +107,35 @@
       <option name="project" value="LOCAL" />
       <updated>1712577486014</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="新增文章页">
+      <option name="closed" value="true" />
+      <created>1712584562879</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1712584562879</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+        <option value="Space.CommitStatus" />
+        <option value="GitHub.CommitStatus" />
+      </list>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="过滤node_modules" />
-    <option name="LAST_COMMIT_MESSAGE" value="过滤node_modules" />
+    <MESSAGE value="新增文章页" />
+    <option name="LAST_COMMIT_MESSAGE" value="新增文章页" />
   </component>
 </project>
