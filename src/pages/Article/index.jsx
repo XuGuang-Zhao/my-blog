@@ -78,7 +78,7 @@ const Article = () => {
                 return (
                     <Space size="middle">
                         <Button type="primary" shape="circle" icon={<EditOutlined/>}
-                                onClick={() => navigate(`/publish?id=${data.id}`)}/>
+                                onClick={() => navigate(`/article-publish?id=${data.id}`)}/>
                         <Popconfirm
                             title="删除文章"
                             description="确认要删除当前文章吗?"
@@ -198,7 +198,7 @@ const Article = () => {
                     pageSize: reqData.per_page,
                     onChange: onPageChange
                 }}
-                scroll={{y: "calc(100vh - 360px)"}}
+                scroll={{y: "calc(100vh - 360px )"}}
             />
 
         </div>

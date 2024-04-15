@@ -35,3 +35,21 @@ export function delArticleAPI(id) {
     })
 }
 
+// 更新文章表单
+
+export function updateArticleAPI(data) {
+    return request({
+        url: `http://geek.itheima.net/v1_0/mp/articles/${data.id}?draft=false`,
+        method: 'PUT',
+        data
+    })
+}
+
+
+// 查看文章详情
+export function getArticleApi(id, data) {
+    return request({
+        url: `http://geek.itheima.net/v1_0/mp/articles/${id}`,
+        method: 'get',
+    })
+}

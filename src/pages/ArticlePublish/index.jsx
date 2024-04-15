@@ -11,18 +11,21 @@ import {
     message,
 } from "antd";
 import {PlusOutlined} from "@ant-design/icons";
-import {Link} from "react-router-dom";
+import {Link, useParams, useSearchParams} from "react-router-dom";
 import "./index.scss";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import {useEffect, useState} from "react";
-import {createArticleApi, getChannelAPI} from "@/apis/article.js";
+import {createArticleApi, getArticleApi, getChannelAPI, updateArticleAPI} from "@/apis/article.js";
 
 const ArticlePublish = () => {
     const {Option} = Select;
     const [channelList, setChannelList] = useState([]);
     const [imageList, setImageList] = useState([]);
-    const [imageType, setImageType] = useState(1);
+    const [imageType, setImageType] = useState(0)
+    const [searchParams] = useSearchParams()
+    const articleId = searchParams.get('id')
+    const [form] = Form.useForm()
 
     useEffect(() => {
         const getChannelList = async () => {
@@ -32,20 +35,44 @@ const ArticlePublish = () => {
         getChannelList();
     }, []);
 
-    const formSubmit = async (formValue) => {
+
+    useEffect(() => {
+        async function getArticle() {
+            const res = await getArticleApi(articleId)
+            const {cover, ...formValue} = res.data
+            form.setFieldsValue({...formValue, type: cover.type});
+            setImageType(cover.type)
+            setImageList(cover.images.map(url => {
+                return {url}
+            }))
+        }
+
+        if (articleId) {
+            getArticle()
+        }
+    }, [articleId, form])
+
+    const formSubmit = (formValue) => {
         const {channel_id, content, title} = formValue;
         const reqData = {
             title: title,
             content: content,
             cover: {
-                type: 0,
-                image: imageList,
+                type: imageType,
+                image: imageList.map(item => {
+                    if (item.response) {
+                        return item.response.data.url
+                    } else {
+                        return item.url
+                    }
+                }),
             },
             channel_id: channel_id,
         };
-        const res = await createArticleApi(reqData);
-        if (res.data) {
-            message.success("发布成功");
+        if (articleId) {
+            updateArticleAPI({...reqData, id: articleId})
+        } else {
+            createArticleApi(reqData);
         }
     };
 
@@ -75,6 +102,7 @@ const ArticlePublish = () => {
                     wrapperCol={{span: 16}}
                     initialValues={{type: 1}}
                     onFinish={formSubmit}
+                    form={form}
                 >
                     <Form.Item
                         label="标题"
@@ -98,27 +126,25 @@ const ArticlePublish = () => {
                     </Form.Item>
                     <Form.Item label="封面">
                         <Form.Item name="type">
-                            <Radio.Group value={imageType} onChange={onTypeChange}>
-                                <Radio value={1}>无图</Radio>
-                                <Radio value={2}>单图</Radio>
+                            <Radio.Group onChange={onTypeChange}>
+                                <Radio value={1}>单图</Radio>
                                 <Radio value={3}>三图</Radio>
+                                <Radio value={0}>无图</Radio>
                             </Radio.Group>
                         </Form.Item>
-                        {imageType > 1 && (
-                            <Upload
-                                name="image"
-                                listType="picture-card"
-                                showUploadList
-                                action={"http://geek.itheima.net/v1_0/upload"}
-                                onChange={onUploadChange}
-                                maxCount={imageType}
-                                multiple={imageType > 1}
-                            >
-                                <div style={{marginTop: 8}} onChange={onUploadChange}>
-                                    <PlusOutlined/>
-                                </div>
-                            </Upload>
-                        )}
+                        {imageType > 0 && <Upload
+                            listType="picture-card"
+                            showUploadList
+                            action={'http://geek.itheima.net/v1_0/upload'}
+                            name='image'
+                            onChange={onUploadChange}
+                            maxCount={imageType}
+                            fileList={imageList}
+                        >
+                            <div style={{marginTop: 8}}>
+                                <PlusOutlined/>
+                            </div>
+                        </Upload>}
                     </Form.Item>
                     <Form.Item
                         label="内容"
