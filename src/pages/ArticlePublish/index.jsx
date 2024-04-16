@@ -59,7 +59,7 @@ const ArticlePublish = () => {
             content: content,
             cover: {
                 type: imageType,
-                image: imageList.map(item => {
+                images: imageList.map(item => {
                     if (item.response) {
                         return item.response.data.url
                     } else {
@@ -96,11 +96,9 @@ const ArticlePublish = () => {
                     />
                 }
             >
-                {/*提交表单*/}
                 <Form
                     labelCol={{span: 4}}
                     wrapperCol={{span: 16}}
-                    initialValues={{type: 1}}
                     onFinish={formSubmit}
                     form={form}
                 >
